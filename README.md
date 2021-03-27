@@ -1,2 +1,2 @@
 # Snake
-First try to an snake game in python
+First try on doing the famous Snake in python
