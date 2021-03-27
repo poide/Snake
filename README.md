@@ -1,2 +1,2 @@
 # Snake
-First try on doing the famous Snake in python
+First try on doing the famouse Snake in python with pygame
