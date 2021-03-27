@@ -15,7 +15,7 @@ class Game:
     self.facing = "N"
     self.FoodPosition = initialPositionFood
     self.state = "Running"
-
+    self.nextFacing = "N"
   def boardToConsole(self): 
     i = 0
     while i < 10:
@@ -39,9 +39,10 @@ class Game:
     self.board[totalPositions[randrange(len(totalPositions))]]= -1
 
   def move(self):
+    self.facing=self.nextFacing
     if len(self.positionList) == 100:
       self.state = "Win"
-    if self.facing == "N" :
+    if self.nextFacing == "N" :
       newHeadPosition = self.positionList[0] - 10
       if newHeadPosition < 0:
         newHeadPosition = newHeadPosition + 100
@@ -56,7 +57,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]
-    if self.facing == "S" :
+    if self.nextFacing == "S" :
       newHeadPosition = self.positionList[0] + 10
       if newHeadPosition >=100:
         newHeadPosition = newHeadPosition -100
@@ -71,7 +72,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]
-    if self.facing == "E" :
+    if self.nextFacing == "E" :
       newHeadPosition = self.positionList[0] + 1
       if newHeadPosition % 10 == 0:
         newHeadPosition = newHeadPosition -10
@@ -86,7 +87,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]  
-    if self.facing == "W" :
+    if self.nextFacing == "W" :
       newHeadPosition = self.positionList[0] - 1
       if newHeadPosition % 10 == 9:
         newHeadPosition = newHeadPosition + 10
@@ -105,13 +106,13 @@ class Game:
   def changeOrientation(self,orientation:str):
     if orientation == "W":
       if self.facing != "E":
-        self.facing = "W"
+        self.nextFacing = "W"
     if orientation == "E":
       if self.facing != "W":
-        self.facing = "E"
+        self.nextFacing = "E"
     if orientation == "N":
       if self.facing != "S":
-        self.facing = "N"
+        self.nextFacing = "N"
     if orientation == "S":
       if self.facing != "N":
-        self.facing = "S"
+        self.nextFacing = "S"

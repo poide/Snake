@@ -16,9 +16,13 @@ def main():
     while run:
         pygame.time.delay(50)
         if game.state == "Win":
-            run = False
+            game = Game()
         elif game.state == "Dead":
-            run = False
+            print("Has perdido")
+            print(game.boardToConsole())
+            print(game.facing)
+            print(game.positionList)
+            game = Game()
         events = pygame.event.get()    
         for event in events:
             if event.type == pygame.QUIT:
@@ -60,7 +64,6 @@ def main():
             pygame.display.flip()
 
         fixInput = not fixInput
-    
     pygame.quit()
 if __name__ == "__main__":
     main()
