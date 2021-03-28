@@ -29,6 +29,22 @@ def renderFrame(game,window):
     window.blit(NumberScoreSurface,(275,30))                                      #
     pygame.display.flip()                                                         # In this line I update the frame
 
+def pauseMenu():    
+    check = True
+    menuDisplay = ["Return to game", "Options", "Quit"]
+    while check:
+        events = pygame.event.get()    
+        for event in events:
+            if event.type == pygame.QUIT:
+                return "Q"
+            if event.type == pygame.KEYDOWN: 
+                if event.key == pygame.K_RETURN :
+                    check = False
+    return
+
+
+
+
 
 
 
@@ -37,11 +53,12 @@ def main():
     window = pygame.display.set_mode((500, 500))            
     pygame.display.flip()
     pygame.display.set_caption("Snake by PepAss'o")
+
+    
+    
     game = Game()
-    run = True
     fixInput = True
-
-
+    run = True
     while run:
 
         pygame.time.delay(50)
@@ -66,8 +83,10 @@ def main():
                     game.changeOrientation("S")
                 elif event.key == pygame.K_RIGHT:
                     game.changeOrientation("E")
-
-
+                elif event.key == pygame.K_ESCAPE:
+                    result = pauseMenu()
+                    if result == "Q":
+                        run = False
         if fixInput == True:
             game.move()
             renderFrame(game,window)
