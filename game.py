@@ -16,6 +16,7 @@ class Game:
     self.FoodPosition = initialPositionFood
     self.state = "Running"
     self.nextFacing = "N"
+    self.score = 0
   def boardToConsole(self): 
     i = 0
     while i < 10:
@@ -40,7 +41,7 @@ class Game:
 
   def move(self):
     self.facing=self.nextFacing
-    if len(self.positionList) == 100:
+    if self.score == 99:
       self.state = "Win"
     if self.nextFacing == "N" :
       newHeadPosition = self.positionList[0] - 10
@@ -52,6 +53,7 @@ class Game:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
         self.spawnFood()
+        self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
@@ -67,6 +69,7 @@ class Game:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
         self.spawnFood()
+        self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
@@ -82,6 +85,7 @@ class Game:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
         self.spawnFood()
+        self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
@@ -97,6 +101,7 @@ class Game:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
         self.spawnFood()
+        self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
