@@ -25,7 +25,6 @@ def main():
     pygame.display.flip()
     pygame.display.set_caption("Snake by PepAss'o")
     game = Game()
-    fixInput = True
     run = True
 
     while run:
@@ -48,15 +47,13 @@ def main():
                     result = pauseMenu()
                     if result == "Q":
                         run = False
-        if fixInput == True:
-            game.move()
-            graphics.renderFrame(game,window)
-            if game.state == "Win":
-                game = Game()
-            elif game.state == "Dead":
-                print("Has perdido")
-                game = Game()
-        fixInput = not fixInput
+        game.move()
+        graphics.renderFrame(game,window)
+        if game.state == "Win":
+            game = Game()
+        elif game.state == "Dead":
+            print("You lose")
+            game = Game()
     pygame.quit()
 if __name__ == "__main__":
     main()

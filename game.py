@@ -1,6 +1,7 @@
 from random import randrange
-
+import random
 class Game:
+  
   def __init__(self):
     initialPosition = randrange(100)
     initialPositionFood = randrange(100)
@@ -15,8 +16,8 @@ class Game:
     self.facing = "N"
     self.FoodPosition = initialPositionFood
     self.state = "Running"
-    self.nextFacing = "N"
     self.score = 0
+  
   def boardToConsole(self): 
     i = 0
     while i < 10:
@@ -31,19 +32,20 @@ class Game:
 
 
   def spawnFood(self):
-    totalPositions = list(range(100))
-    usedPositions = self.positionList.copy()
-    usedPositions.sort()
-    usedPositions.reverse()
-    for i in usedPositions:
-      totalPositions.remove(i)
-    self.board[totalPositions[randrange(len(totalPositions))]]= -1
+    copyboard = self.board.copy()
+    listEmptyPos = []
+    i = 0
+    while i < len(copyboard):
+      if copyboard[i] == 0:
+        listEmptyPos.append(i)
+      i = i+1 
+
+    self.board[random.choice(listEmptyPos)] = -1
 
   def move(self):
-    self.facing=self.nextFacing
     if self.score == 99:
       self.state = "Win"
-    if self.nextFacing == "N" :
+    if self.facing == "N" :
       newHeadPosition = self.positionList[0] - 10
       if newHeadPosition < 0:
         newHeadPosition = newHeadPosition + 100
@@ -59,7 +61,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]
-    if self.nextFacing == "S" :
+    if self.facing == "S" :
       newHeadPosition = self.positionList[0] + 10
       if newHeadPosition >=100:
         newHeadPosition = newHeadPosition -100
@@ -75,7 +77,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]
-    if self.nextFacing == "E" :
+    if self.facing == "E" :
       newHeadPosition = self.positionList[0] + 1
       if newHeadPosition % 10 == 0:
         newHeadPosition = newHeadPosition -10
@@ -91,7 +93,7 @@ class Game:
         self.board[newHeadPosition]= 1
         self.board[self.positionList[-1]] = 0
         self.positionList = self.positionList[0:(len(self.positionList)-1)]  
-    if self.nextFacing == "W" :
+    if self.facing == "W" :
       newHeadPosition = self.positionList[0] - 1
       if newHeadPosition % 10 == 9:
         newHeadPosition = newHeadPosition + 10
@@ -110,14 +112,14 @@ class Game:
 
   def changeOrientation(self,orientation:str):
     if orientation == "W":
-      if self.facing != "E":
-        self.nextFacing = "W"
+      if self.facing != "E" and self.facing != "W":
+        self.facing = "W"
     if orientation == "E":
-      if self.facing != "W":
-        self.nextFacing = "E"
+      if self.facing != "W" and self.facing != "E":
+        self.facing = "E"
     if orientation == "N":
-      if self.facing != "S":
-        self.nextFacing = "N"
-    if orientation == "S":
-      if self.facing != "N":
-        self.nextFacing = "S"
+      if self.facing != "S" and self.facing != "N":
+        self.facing = "N"
+    if orientation == "S" :
+      if self.facing != "N" and self.facing != "S":
+        self.facing = "S"
