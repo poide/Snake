@@ -27,16 +27,10 @@ def main():
     game = Game()
     fixInput = True
     run = True
+
     while run:
-        x = 75
-        if(game.score % 5 == 0):
-            x = x - 5
+        x = (100 - game.score)
         pygame.time.delay(x)
-        if game.state == "Win":
-            game = Game()
-        elif game.state == "Dead":
-            print("Has perdido")
-            game = Game()
         events = pygame.event.get()    
         for event in events:
             if event.type == pygame.QUIT:
@@ -57,6 +51,11 @@ def main():
         if fixInput == True:
             game.move()
             graphics.renderFrame(game,window)
+            if game.state == "Win":
+                game = Game()
+            elif game.state == "Dead":
+                print("Has perdido")
+                game = Game()
         fixInput = not fixInput
     pygame.quit()
 if __name__ == "__main__":
