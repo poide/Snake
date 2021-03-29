@@ -112,14 +112,14 @@ class Game:
 
   def changeOrientation(self,orientation:str):
     if orientation == "W":
-      if self.facing != "E" and self.facing != "W":
+      if self.facing != "E":
         self.facing = "W"
     if orientation == "E":
-      if self.facing != "W" and self.facing != "E":
+      if self.facing != "W":
         self.facing = "E"
     if orientation == "N":
-      if self.facing != "S" and self.facing != "N":
+      if self.facing != "S":
         self.facing = "N"
     if orientation == "S" :
-      if self.facing != "N" and self.facing != "S":
+      if self.facing != "N":
         self.facing = "S"

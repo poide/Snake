@@ -21,7 +21,7 @@ def pauseMenu():
 
 def main():
     pygame.init()                                               
-    window = pygame.display.set_mode((350, 245))            
+    window = pygame.display.set_mode((429, 245))            
     pygame.display.flip()
     pygame.display.set_caption("Snake by PepAss'o")
     game = Game()
@@ -37,12 +37,16 @@ def main():
             if event.type == pygame.KEYDOWN:    
                 if event.key == pygame.K_LEFT:
                     game.changeOrientation("W")
+                    break
                 elif event.key == pygame.K_UP:
                     game.changeOrientation("N")
+                    break
                 elif event.key == pygame.K_DOWN:
                     game.changeOrientation("S")
+                    break
                 elif event.key == pygame.K_RIGHT:
                     game.changeOrientation("E")
+                    break
                 elif event.key == pygame.K_ESCAPE:
                     result = pauseMenu()
                     if result == "Q":

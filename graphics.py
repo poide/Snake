@@ -26,13 +26,13 @@ def renderBoard100(game,window):
 def renderFullScore100(game,window):
     window.blit(image, (245, 0))
     myfont = pygame.font.SysFont('Comic Sans MS', 30)                             #
-    NumberScoreSurface = myfont.render(str(game.score), False, (255, 234, 0))         #                          score number
-    window.blit(NumberScoreSurface,(295,60))                                      #
+    NumberScoreSurface = myfont.render(str(game.score), False, (0,0,0))         #                          score number
+    window.blit(NumberScoreSurface,(270,80))                                      #
     pygame.display.flip()                                                         # In this line I update the frame
 
 def rederUpdateScore100(game,window):
-    NumberScoreSurface = myfont.render(str(game.score), False, (255, 234, 0))         #                          score number
-    window.blit(NumberScoreSurface,(295,60))                                      #
+    NumberScoreSurface = myfont.render(str(game.score), False, (0,0,0))         #                          score number
+    window.blit(NumberScoreSurface,(270,80))                                      #
     pygame.display.flip()                                                         # In this line I update the frame    
 
 
