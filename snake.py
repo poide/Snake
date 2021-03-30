@@ -26,7 +26,6 @@ def main():
     pygame.display.set_caption("Snake by PepAss'o")
     game = Game()
     run = True
-
     while run:
         x = (100 - game.score)
         pygame.time.delay(x)

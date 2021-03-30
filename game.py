@@ -1,5 +1,6 @@
 from random import randrange
 import random
+import audio
 class Game:
   
   def __init__(self):
@@ -54,6 +55,7 @@ class Game:
       if self.board[newHeadPosition] == -1: #Here you eat a piece of food, so we need to create another one
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
+        audio.playEatSound()        
         self.spawnFood()
         self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
@@ -70,6 +72,7 @@ class Game:
       if self.board[newHeadPosition] == -1: #Here you eat a piece of food, so we need to create another one
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
+        audio.playEatSound()
         self.spawnFood()
         self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
@@ -86,6 +89,7 @@ class Game:
       if self.board[newHeadPosition] == -1: #Here you eat a piece of food, so we need to create another one
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
+        audio.playEatSound()
         self.spawnFood()
         self.score = self.score + 1
       if self.board[newHeadPosition] == 0:
@@ -102,6 +106,7 @@ class Game:
       if self.board[newHeadPosition] == -1: #Here you eat a piece of food, so we need to create another one
         self.positionList.insert(0,newHeadPosition)
         self.board[newHeadPosition]= 1
+        audio.playEatSound()
         self.spawnFood()
         self.score = self.score + 1
       if self.board[newHeadPosition] == 0:

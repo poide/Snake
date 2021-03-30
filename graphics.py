@@ -1,8 +1,9 @@
 import pygame
 import os
-from pygame.locals import *
 image = pygame.image.load('./Images/SnakeScore.jpg')
-justLoadScore = False
+
+
+
 def renderBoard100(game,window):
     window.fill((128,128,128)) #Fill the screen with light gray,  the background
     i = 0
@@ -23,23 +24,14 @@ def renderBoard100(game,window):
         i = i +1
 
 
-def renderFullScore100(game,window):
+def renderScore100(game,window):
     window.blit(image, (245, 0))
-    myfont = pygame.font.SysFont('Comic Sans MS', 30)                             #
-    NumberScoreSurface = myfont.render(str(game.score), False, (0,0,0))         #                          score number
-    window.blit(NumberScoreSurface,(270,80))                                      #
+    myfont = pygame.font.SysFont('Comic Sans MS', 30)                                #
+    NumberScoreSurface = myfont.render(str(game.score), False, (0,0,0))              #The score number
+    window.blit(NumberScoreSurface,(270,80))                                         #
     pygame.display.flip()                                                         # In this line I update the frame
-
-def rederUpdateScore100(game,window):
-    NumberScoreSurface = myfont.render(str(game.score), False, (0,0,0))         #                          score number
-    window.blit(NumberScoreSurface,(270,80))                                      #
-    pygame.display.flip()                                                         # In this line I update the frame    
-
 
 
 def renderFrame(game,window):
     renderBoard100(game,window)
-    if justLoadScore == False:
-        renderFullScore100(game,window)
-    else:
-        rederUpdateScore100(game,window)
+    renderScore100(game,window)
